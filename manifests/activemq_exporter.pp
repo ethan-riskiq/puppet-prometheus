@@ -75,14 +75,6 @@
 #  Requires https://github.com/alxrem/prometheus-logstash-exporter
 
 class prometheus::activemq_exporter(
-  String $download_extension,
-  Array $extra_groups,
-  String $group,
-  String $package_ensure,
-  String $package_name,
-  String $user,
-  String $version,
-  Prometheus::Uri $download_url_base,
   #String $cnf_logstash_host      = 'localhost',
   Boolean $purge_config_dir      = true,
   Boolean $restart_on_change     = true,
@@ -108,8 +100,6 @@ class prometheus::activemq_exporter(
     true    => Service['activemq_exporter'],
     default => undef,
   }
-
-  # $options = "-logstash.host ${cnf_logstash_host} ${extra_options}"
 
   prometheus::daemon { 'activemq_exporter':
     install_method     => $install_method,
